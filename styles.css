@@ -4,46 +4,99 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #9370DB; /* Medium Purple */
+    background-color: #FFB6C1; /* Light Pink */
     margin: 0;
     color: #FFFFFF; /* White */
     overflow: hidden;
     position: relative;
 }
 
-body::before,
-body::after {
-    content: '';
+.background-decor {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    animation: move 10s infinite;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     z-index: 0;
 }
 
-body::before {
+.decor-element {
+    position: absolute;
+    opacity: 0.5;
+    animation: float 10s infinite;
+    z-index: 0;
+}
+
+.decor-element.flower {
+    width: 50px;
+    height: 50px;
+    background-color: #FF1493; /* Deep Pink */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.decor-element.heart {
+    width: 40px;
+    height: 40px;
+    background-color: #FF69B4; /* Hot Pink */
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+}
+
+.decor-element.flower:nth-child(1) {
     top: 10%;
-    left: 20%;
+    left: 10%;
     animation-delay: 0s;
 }
 
-body::after {
-    bottom: 10%;
-    right: 20%;
+.decor-element.flower:nth-child(2) {
+    top: 30%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.decor-element.flower:nth-child(3) {
+    top: 50%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+.decor-element.flower:nth-child(4) {
+    top: 70%;
+    left: 50%;
+    animation-delay: 6s;
+}
+
+.decor-element.heart:nth-child(5) {
+    top: 20%;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.decor-element.heart:nth-child(6) {
+    top: 40%;
+    left: 30%;
+    animation-delay: 3s;
+}
+
+.decor-element.heart:nth-child(7) {
+    top: 60%;
+    left: 60%;
     animation-delay: 5s;
 }
 
-@keyframes move {
+.decor-element.heart:nth-child(8) {
+    top: 80%;
+    left: 40%;
+    animation-delay: 7s;
+}
+
+@keyframes float {
     0% {
-        transform: translateY(0) translateX(0);
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(-20px) translateX(20px);
+        transform: translateY(-20px);
     }
     100% {
-        transform: translateY(0) translateX(0);
+        transform: translateY(0);
     }
 }
 
@@ -51,12 +104,13 @@ body::after {
     position: relative;
     width: 500px;
     height: 400px;
-    background-color: #8A2BE2; /* Blue Violet */
+    background-color: #FF69B4; /* Hot Pink */
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    background-image: url('https://www.transparenttextures.com/patterns/debut-light.png');
 }
 
 .flap {
@@ -65,7 +119,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 200px;
-    background-color: #7B68EE; /* Medium Slate Blue */
+    background-color: #FF1493; /* Deep Pink */
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     display: flex;
     justify-content: center;
@@ -86,7 +140,18 @@ body::after {
     left: 0;
     width: 100%;
     height: 200px;
-    background-color: #8A2BE2; /* Blue Violet */
+    background-color: #FF69B4; /* Hot Pink */
+}
+
+.decor-stripes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+    background-size: 28.28px 28.28px;
+    opacity: 0.5;
 }
 
 .letter {
@@ -100,10 +165,20 @@ body::after {
     box-sizing: border-box;
     transition: transform 0.5s;
     transform: translateY(200px);
-    color: #8A2BE2; /* Blue Violet */
-    border: 2px solid #7B68EE; /* Medium Slate Blue */
+    color: #FF69B4; /* Hot Pink */
+    border: 2px solid #FF1493; /* Deep Pink */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-image: url('https://www.transparenttextures.com/patterns/debut-light.png');
+}
+
+.letter-background {
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 105, 180, 0.2); /* Semi-transparent Hot Pink */
 }
 
 .envelope.open .flap {
@@ -146,6 +221,11 @@ body::after {
     text-shadow: 0 0 10px #FF69B4, 0 0 20px #FF69B4, 0 0 30px #FF69B4; /* Increased brightness */
 }
 
+.rising-element.flower {
+    color: #FFB6C1; /* Light Pink */
+    text-shadow: 0 0 10px #FFB6C1, 0 0 20px #FFB6C1, 0 0 30px #FFB6C1; /* Increased brightness */
+}
+
 .letter p {
     margin: 10px 0;
     font-size: 18px;
@@ -154,199 +234,105 @@ body::after {
 .letter .signature {
     text-align: right;
     font-size: 24px;
-    color: #8A2BE2; /* Blue Violet */
+    color: #FF69B4; /* Hot Pink */
 }
 
 .letter .heart-decor {
     font-size: 24px;
-    color: #8A2BE2; /* Blue Violet */
+    color: #FF69B4; /* Hot Pink */
     text-align: center;
     margin: 20px 0;
 }
 
 .letter .flower-decor {
     font-size: 24px;
-    color: #7B68EE; /* Medium Slate Blue */
+    color: #FF1493; /* Deep Pink */
     text-align: center;
     margin: 20px 0;
 }
 
 /* Additional decorative elements */
-.star {
+.candle {
     position: absolute;
     width: 10px;
-    height: 10px;
-    background-color: #DDA0DD; /* Plum */
-    border-radius: 50%;
-    box-shadow: 0 0 10px #DDA0DD, 0 0 20px #DDA0DD, 0 0 30px #DDA0DD;
-    animation: twinkle 5s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-.star:nth-child(1) {
-    top: 20%;
-    left: 30%;
-    animation-delay: 0s;
-}
-
-.star:nth-child(2) {
-    top: 40%;
-    left: 70%;
-    animation-delay: 1s;
-}
-
-.star:nth-child(3) {
-    top: 60%;
-    left: 50%;
-    animation-delay: 2s;
-}
-
-.star:nth-child(4) {
-    top: 80%;
-    left: 20%;
-    animation-delay: 3s;
-}
-
-.star:nth-child(5) {
-    top: 10%;
-    left: 80%;
-    animation-delay: 4s;
-}
-
-.circle {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: float 10s infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.circle:nth-child(1) {
-    top: 30%;
-    left: 40%;
-    animation-delay: 0s;
-}
-
-.circle:nth-child(2) {
-    top: 50%;
-    left: 60%;
-    animation-delay: 2s;
-}
-
-.circle:nth-child(3) {
-    top: 70%;
-    left: 30%;
-    animation-delay: 4s;
-}
-
-.circle:nth-child(4) {
-    top: 20%;
-    left: 70%;
-    animation-delay: 6s;
-}
-
-.circle:nth-child(5) {
-    top: 80%;
-    left: 50%;
-    animation-delay: 8s;
-}
-
-/* Heart and flower animations */
-.heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #FF69B4; /* Hot Pink */
-    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
-    animation: float 6s infinite;
-}
-
-.heart:nth-child(1) {
-    top: 20%;
-    left: 40%;
-    animation-delay: 0s;
-}
-
-.heart:nth-child(2) {
-    top: 40%;
-    left: 60%;
-    animation-delay: 1s;
-}
-
-.heart:nth-child(3) {
-    top: 60%;
-    left: 30%;
-    animation-delay: 2s;
-}
-
-.heart:nth-child(4) {
-    top: 80%;
-    left: 70%;
-    animation-delay: 3s;
-}
-
-.heart:nth-child(5) {
-    top: 10%;
-    left: 50%;
-    animation-delay: 4s;
-}
-
-.flower {
-    position: absolute;
-    width: 30px;
     height: 30px;
     background-color: #FFD700; /* Gold */
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: float 8s infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: flicker 1.5s infinite;
 }
 
-.flower:nth-child(1) {
-    top: 25%;
-    left: 45%;
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.candle:nth-child(1) {
+    top: 70%;
+    left: 30%;
     animation-delay: 0s;
 }
 
-.flower:nth-child(2) {
-    top: 45%;
-    left: 65%;
-    animation-delay: 2s;
+.candle:nth-child(2) {
+    top: 70%;
+    left: 40%;
+    animation-delay: 0.5s;
 }
 
-.flower:nth-child(3) {
-    top: 65%;
-    left: 35%;
-    animation-delay: 4s;
+.candle:nth-child(3) {
+    top: 70%;
+    left: 50%;
+    animation-delay: 1s;
 }
 
-.flower:nth-child(4) {
-    top: 85%;
-    left: 75%;
-    animation-delay: 6s;
+.candle:nth-child(4) {
+    top: 70%;
+    left: 60%;
+    animation-delay: 1.5s;
 }
 
-.flower:nth-child(5) {
+/* Ribbon animations */
+.ribbon {
+    position: absolute;
+    width: 5px;
+    height: 60px;
+    background-color: #FF1493; /* Deep Pink */
+    border-radius: 5px;
+    animation: wave 2s infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+.ribbon:nth-child(1) {
     top: 15%;
+    left: 25%;
+    animation-delay: 0s;
+}
+
+.ribbon:nth-child(2) {
+    top: 30%;
+    left: 35%;
+    animation-delay: 0.5s;
+}
+
+.ribbon:nth-child(3) {
+    top: 45%;
+    left: 45%;
+    animation-delay: 1s;
+}
+
+.ribbon:nth-child(4) {
+    top: 60%;
     left: 55%;
-    animation-delay: 8s;
+    animation-delay: 1.5s;
 }

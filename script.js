@@ -4,14 +4,20 @@ function openEnvelope() {
 
 function createRisingElement() {
     const element = document.createElement('div');
-    const isHeart = Math.random() > 0.5;
+    const randomValue = Math.random();
     element.classList.add('rising-element');
-    if (isHeart) {
+    
+    if (randomValue < 0.33) {
         element.innerHTML = '❤️';
-    } else {
+        element.classList.add('heart');
+    } else if (randomValue < 0.66) {
         element.innerHTML = '⭐';
         element.classList.add('star');
+    } else {
+        element.innerHTML = '🌸';
+        element.classList.add('flower');
     }
+
     element.style.left = `${Math.random() * 100}%`;
     document.body.appendChild(element);
     setTimeout(() => {
@@ -19,4 +25,9 @@ function createRisingElement() {
     }, 3000); // Adjusted to match the animation duration
 }
 
-setInterval(createRisingElement, 500); // Increased frequency
+setInterval(createRisingElement, 600); // Increased frequency
+
+// Added function to toggle envelope
+function toggleEnvelope() {
+    document.querySelector('.envelope').classList.toggle('open');
+}
